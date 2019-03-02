@@ -1,0 +1,41 @@
+server:
+  port: 8089
+
+spring:
+  datasource:
+    name: datasource
+    url: jdbc:mysql://127.0.0.1:3306/course
+    username: root
+    password: athrun29
+    driverClassName: com.mysql.jdbc.Driver
+    max-active: 2
+    max-idle: 2
+    min-idle: 2
+    initial-size: 2
+    validation-query: select 1
+    test-on-borrow: true
+    test-on-return: false
+    test-while-idle: false
+    time-between-eviction-runs-millis: 3000
+    min-evictable-idle-time-millis: 3000
+    max-wait: 3000
+    jmx-enabled: true
+  data:
+    jpa:
+      repository:
+        enabled: true
+  #添加对jsp的支持
+  mvc.view:
+    prefix: /WEB-INF/views/
+    suffix: .jsp
+  thymeleaf:
+    cache: false
+    enabled: false
+
+# Mybatis
+mybatis:
+  config-locations: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: org.zuel.course.frame.model
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
